@@ -21,6 +21,7 @@ module.exports = function(options) {
             this.emit('end');
         })
         .pipe($.if(config.css.autoprefix.enabled, $.autoprefixer(config.css.autoprefix.options)))
+        .pipe($.if(config.css.pleeease.enabled, $.pleeease(config.css.pleeease.options)))
         .pipe($.concat(options.output.name))
         .pipe($.if(config.production, $.minifyCss()))
         .pipe($.if(config.sourcemaps, $.sourcemaps.write('.')))
